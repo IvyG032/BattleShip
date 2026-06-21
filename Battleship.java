@@ -51,7 +51,7 @@ public class Battleship {
 				break;
 			}		
 		}
-		mainScanner.close();
+		mainScanner.close(); // Close scanner in main
 
 	}
 
@@ -63,15 +63,14 @@ public class Battleship {
         }
 		// Ask player to enter coordinate for five times
 		for (int i = 0; i < 5; i ++) {	
-			// Check for valid input
-			boolean isValid = false; // The switch
+			boolean isValid = false; // The switch to verify location
 			while (!isValid) {
-				System.out.println("Enter ship " + (i+1) + " location: ");  // Record row and col as integers 
-				int[] locations = getValidLocation(input);
+				System.out.println("Enter ship " + (i+1) + " location: ");  
+				int[] locations = getValidLocation(input); // Call method to verify & get user input
 				int row = locations[0];
 				int col = locations[1];
 
-				if (player[row][col] == '@') { // Check if coordinates are valid
+				if (player[row][col] == '@') { // Check if coordinates already existed
 					System.out.println("You already have a ship there. Choose different coordinates.");
 				}
 				else {
@@ -108,9 +107,10 @@ public class Battleship {
 		}
 	}
 
-// Use this method to check if location is out of bounds
+// Use this method to get user input & check if location is out of bounds
 	private static int[] getValidLocation(Scanner input) {
 		while (true) {
+			// Control bold feature only at one place 
 			System.out.print(BOLD); // Turn on bold
 			int row = input.nextInt();
 			int col = input.nextInt();
@@ -120,7 +120,7 @@ public class Battleship {
 			System.out.println("Invalid coordinates. Choose different coordinates.");
 			}
 			else {
-				return new int[] {row, col};
+				return new int[] {row, col}; // Return valid location as int array
 			}
 		}
 	}
@@ -130,11 +130,10 @@ public class Battleship {
 		boolean isValid = false;
 		int defenderNum = (attackerNum == 1) ? 2 : 1; // Loop through players to record who is attacking
 
-		while (!isValid) {
+		while (!isValid) { // Keep asking till user enters valid coordinate
 		int[] locations = getValidLocation(input);
 		int row = locations[0];
 		int col = locations[1];
-
 			if (player[row][col] == '@') {
 				player[row][col] = 'X';
 				System.out.println("PLAYER " + attackerNum + " HIT PLAYER " + defenderNum + "'s SHIP!"); 
@@ -153,6 +152,7 @@ public class Battleship {
 
 
 // Use this method to detect winner
+// Whoever gets 5 'X' first is the winner
 	private static boolean findWinner(char[][] player) {
 		int count = 0;
 		for (int row = 0; row < 5; row++) {
