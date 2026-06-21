@@ -1,6 +1,6 @@
 # Battleship Game Takeaways
 
-This is a summary of what I learned while spending three days building a Battleship game from scratch. These are the practical lessons I figured out through trial and error.
+This is a summary of what I learned while building a Battleship game from scratch. These are the practical lessons I figured out through trial and error.
 
 ### 1. Understanding "Decoupling" in Practice
 I became more familiar with the "decouple" nature of code. I started to understand which functions should be wrapped in a method and which can stay as they are:
