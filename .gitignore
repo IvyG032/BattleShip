@@ -1,0 +1,10 @@
+*.class
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+bin/
+out/
+# Mac OS Global
+.DS_Store
